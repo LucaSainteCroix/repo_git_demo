@@ -7,6 +7,8 @@ from typing import List, Tuple
 import requests
 import streamlit as st
 import pandas as pd
+from sklearn.neighbors import NearestNeighbors
+
 
 from streamlit_searchbox import st_searchbox
 
@@ -81,7 +83,6 @@ with st.sidebar:
 
 def get_recommandations(df, selected_genre, selected_movie):
     selected_movie = selected_movie[:-7].strip()
-    from sklearn.neighbors import NearestNeighbors
     if selected_genre != 'Pas de genre':
         rec_df = df.loc[df['genres'].str.contains(selected_genre)]
     else:
